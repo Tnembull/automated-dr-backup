@@ -1,0 +1,26 @@
+name: "Backup & Disaster Recovery CI"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  shellcheck-and-e2e:
+    name: "ShellCheck & Integration Drill"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout Code"
+        uses: actions/checkout@v4
+
+      - name: "Run ShellCheck"
+        uses: ludeeus/action-shellcheck@master
+        with:
+          scandir: "./bin ./tests"
+
+      - name: "Run E2E Backup & Recovery Drill Test"
+        run: |
+          chmod +x ./bin/*.sh ./tests/*.sh
+          ./tests/test_backup_and_drill.sh

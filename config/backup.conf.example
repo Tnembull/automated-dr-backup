@@ -1,0 +1,24 @@
+# Disaster Recovery & Encrypted Backup Configuration Template
+
+# Backup storage targets
+BACKUP_DIR="/var/backups/production"
+RETENTION_DAYS=14
+
+# Database targets (SQLite / MySQL / PostgreSQL paths)
+SQLITE_DB_PATHS="/var/www/drive/drive.db /var/www/app/database.sqlite"
+
+# GPG Encryption Key Recipient ID or symmetric passphrase placeholder
+GPG_RECIPIENT="ops-backup@example.com"
+ENCRYPTION_MODE="symmetric" # options: "symmetric" or "asymmetric"
+GPG_PASSPHRASE_FILE="/etc/backup-secrets/gpg-passphrase.txt"
+
+# Cloud Object Storage (S3 / Cloudflare R2 / MinIO compatible)
+S3_ENABLED="true"
+S3_ENDPOINT_URL="https://your-account-id.r2.cloudflarestorage.com"
+S3_BUCKET_NAME="production-encrypted-backups"
+S3_PREFIX="vps-production"
+
+# Alerting Webhook (Telegram or Slack)
+TELEGRAM_ALERT_ENABLED="true"
+TELEGRAM_BOT_TOKEN="YOUR_TELEGRAM_BOT_TOKEN"
+TELEGRAM_CHAT_ID="-1001234567890"

@@ -1,0 +1,9 @@
+*.conf
+*.txt
+*.key
+*.gpg
+*.bak
+*.tar.gz
+*.sha256
+secrets/
+backups/
